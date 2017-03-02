@@ -28,6 +28,28 @@ function startGame() {
         }
     ];
 
+    var character = {
+        y: 0,
+        x: 0,
+        color: "#4c6fff"
+    };
+
+    window.addEventListener('keyup', function (event) {
+        switch (event.keyCode) {
+            case 38:
+                character.y -= 50;
+                break;
+            case 40:
+                character.y += 50;
+                break;
+            case 37:
+                character.x -= 50;
+                break;
+            case 39:
+                character.x += 50;
+                break;
+        }
+    });
 
     var x = 0;
 
@@ -37,6 +59,9 @@ function startGame() {
         x++;
         clearScreen(ctx, canvasElement);
 
+        drawSquare(ctx, character.x, character.y, character.color);
+
+        // draw squares
         for (var i = 0; i < squares.length; i++) {
             var square = squares[i];
             drawSquare(ctx, square.x + x, square.y, square.color);
